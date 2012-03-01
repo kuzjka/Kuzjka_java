@@ -1,7 +1,7 @@
 package muKuzja;
 
 /**
- * This is in-memory realization of {@link SocialConnectionsService} interface.
+ * This is in-memory realization of {@link SocialConnectionsService} interface..
  * 
  * @author Kuzjka
  */
