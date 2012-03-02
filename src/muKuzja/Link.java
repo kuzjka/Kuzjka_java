@@ -4,47 +4,37 @@ package muKuzja;
  * Provides links between two nodes.
  * @author Kuzjka
  */
-public class Link {
+public class Link<T extends Node> {
 
-    private Node iFirstNode;
-    private Node iSecondNode;
+    private final T left;
+    private final T right;
 
     /**
      * Initializes the link.
      *
-     * @param firstNode {@link Node} object. Cannot be null or same as {@code secondNode}.
-     * @param secondNode {@link Node} object. Cannot be null or same as {@code firstNode}.
+     * @param left {@link Node} object. Cannot be null or same as {@code right}.
+     * @param right {@link Node} object. Cannot be null or same as {@code left}.
      */
-
-    public Link(Node firstNode, Node secondNode) {
-        iFirstNode = firstNode;
-        iSecondNode = secondNode;
+    public Link(T left, T right) {
+        this.left = left;
+        this.right = right;
     }
-
+    
     /**
-     * Checks if this Link instance contains the node.
-     *
-     * @param node {@link Node} object to search in this Link instance.
+     * Gets left node.
      * 
-     * @return {@code true} if link contains node, otherwise {@code false}.
+     * @return {$link Node} object - left node.
      */
-    public boolean contains (Node node) {
-        return(iFirstNode.equals(node) || iSecondNode.equals(node));
+    public T left() {
+        return left;
     }
-
-    /** 
-     * Returns {@link Node} object which is linked with {@code node} or {@code null}
-     * if the Link instance doesn't contain the {@code node}.
+    
+    /**
+     * Gets right node.
      * 
-     * @param node {@link Node} to search in this Link instance.
-     * 
-     * @return
-     *      {@link Node} object which is linked with {@code node} or {@code null}
-     *      if the Link instance doen't contain the {@code node}. 
+     * @return {$link Node} object - right node.
      */
-    public Node otherNode (Node node) {
-        if (iFirstNode.equals(node)) return iSecondNode;
-        if (iSecondNode.equals(node)) return iFirstNode;
-        return null;
+    public T right() {
+        return right;
     }
 }

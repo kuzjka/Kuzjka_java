@@ -1,29 +1,36 @@
 package muKuzja;
 
+import java.util.List;
+
 /**
- * This is in-memory realization of {@link SocialConnectionsService} interface..
+ * This is in-memory realization of {@link SocialConnectionsService} interface.
  * 
  * @author Kuzjka
  */
 public class InMemorySocialConnectionsServiceImpl implements SocialConnectionsService {
-    
-    public void addLink(Link link) {
-        //TODO
+
+    @Override
+    public void addLink(Link<? extends Node> link) {
+        // TODO Auto-generated method stub
+        
     }
-    
-    public void removeLink(Link link) {
-        //TODO
+
+    @Override
+    public void removeLink(Link<? extends Node> link) {
+        // TODO Auto-generated method stub
+        
     }
-    
-    public boolean areConnected(Node firstNode, Node secondNode) {
-        //TODO
-        return false;
-    }
-    
-    public Node[] hisNodeList(Node node) {
-        //TODO
+
+    @Override
+    public List<Link<? extends Node>> linkChainBetween(Node left, Node right) {
+        // TODO Auto-generated method stub
         return null;
     }
-    
+
+    @Override
+    public List<Node> nodeListForId(int id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

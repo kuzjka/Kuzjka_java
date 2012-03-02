@@ -6,8 +6,8 @@ package muKuzja;
  */
 public class Node {
 
-    private int iId;
-    private String iName;
+    private final int id;
+    private String name;
 
     /**
      * Initializes the node.
@@ -16,8 +16,8 @@ public class Node {
      * @param name Name of the node.
      */
     public Node(int id, String name) {
-        iId = id;
-        iName = name;
+        this.id = id;
+        this.name = name;
     }
 
     /**
@@ -26,7 +26,7 @@ public class Node {
      * @return id of this Node instance.
      */
     public int id() {
-        return iId;
+        return id;
     }
 
     /**
@@ -35,6 +35,6 @@ public class Node {
      * @return name of this Node instance.
      */
     public String name() {
-        return iName;
+        return name;
     }
 }
