@@ -11,19 +11,21 @@ public interface SocialConnectionsService {
     /**
      * Adds link to the network.
      * 
-     * @param link {@link Link} object to be added.
+     * @param left {@link Node} to link with {@code right}.
+     * @param right {@link Node} to link with {@code left}.
      */
-    public void addLink(Link<? extends Node> link);
+    public void addLink(Node left, Node right);
     
     /**
      * Removes link from the network.
      * 
-     * @param link {@link Link} object to be removed.
+     * @param left {@link Node} which link with {@code right} will be removed.
+     * @param right {@link Node} which link with {@code left} will be removed.
      */
-    public void removeLink(Link<? extends Node> link);
+    public void removeLink(Node left, Node right);
     
     /**
-     * Checks if nodes are connected (directly or not) and returns chain of links between them.
+     * Checks if nodes are connected (directly or not) and returns chain of nodes which represent this connection.
      * 
      * @param left
      *      {@link Node} to be checked for connection with {@code right}.
@@ -33,11 +35,11 @@ public interface SocialConnectionsService {
      *      Cannot be null or same as {@code left}.
      *      
      * @return
-     *      {@link Link} array, representing chain of links from {@code left} node
-     *      to {@code right} node, or {@code null} if nodes are not connected.
-     *      In case of direct connection, array will consist of one link.
+     *      {@link Node} list, representing all nodes in connection from {@code left}
+     *      to {@code right}, or {@code null} if nodes are not connected.
+     *      In case of direct connection, list will consist of only {@code left} and {@code right}.
      */
-    public List<Link<? extends Node>> linkChainBetween(Node left, Node right);
+    public LinkedList<? extends Node> getPathBetween(Node left, Node right);
     
     /**
      * Returns list of nodes directly connected with the certain node, specified by id.
