@@ -31,7 +31,7 @@ public class TestInMemorySocialConnectionsServiceImpl {
         assertEquals(2, service.nodeListForId(1).size());
         
         //checks if kuzjka and kulya are directly connected
-        assertEquals(2, service.getPathBetween(kuzjka, kulya).size());
+        assertEquals(2, service.getPathBetween(kuzjka, kulya, 5).size());
     }
     
     @Test
@@ -54,7 +54,8 @@ public class TestInMemorySocialConnectionsServiceImpl {
         result.add(ruel);
         result.add(kuzjka);
         result.add(kulya);
-        assertEquals(result, service.getPathBetween(ruel, kulya));
+        assertEquals(result, service.getPathBetween(ruel, kulya, 5));
+        assertNull(service.getPathBetween(ruel, kulya, 2));
     }
     
     @Test

@@ -26,6 +26,7 @@ public interface SocialConnectionsService {
     
     /**
      * Checks if nodes are connected (directly or not) and returns chain of nodes which represent this connection.
+     * Nodes will be searched recursively until chain length reaches {@code maxChain}.
      * 
      * @param left
      *      {@link Node} to be checked for connection with {@code right}.
@@ -33,13 +34,16 @@ public interface SocialConnectionsService {
      * @param right
      *      {@link Node} to be checked for connection with {@code left}.
      *      Cannot be null or same as {@code left}.
+     * @param maxChain
+     *      Maximum number of nodes in the chain before recursive search stops. Should be {@code 2} or higher.
      *      
      * @return
      *      {@link Node} list, representing all nodes in connection from {@code left}
-     *      to {@code right}, or {@code null} if nodes are not connected.
+     *      to {@code right}, or {@code null} if nodes are not connected or the chain is
+     *      longer then {@code maxChain};
      *      In case of direct connection, list will consist of only {@code left} and {@code right}.
      */
-    public LinkedList<? extends Node> getPathBetween(Node left, Node right);
+    public LinkedList<? extends Node> getPathBetween(Node left, Node right, int maxChain);
     
     /**
      * Returns list of nodes directly connected with the certain node, specified by id.
@@ -50,6 +54,6 @@ public interface SocialConnectionsService {
      *      {@link List} of {@link Node} objects representing list of nodes connected with the node
      *      specified by {@code id}, or {@code null} if the are no connections for this node.
      */
-    public List<Node> nodeListForId(int id);
+    public List<Node> nodeListForId(long id);
     
 }
