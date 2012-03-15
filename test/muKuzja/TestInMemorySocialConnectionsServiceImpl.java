@@ -7,9 +7,9 @@ import java.util.*;
 public class TestInMemorySocialConnectionsServiceImpl {
     
     private InMemorySocialConnectionsServiceImpl service;
-    private Node kuzjka = new Node(1, "Kuzjka");
-    private Node ruel = new Node(2, "Ruel");
-    private Node kulya = new Node(3, "Kulya");
+    private Node kuzjka = new Person(1, "Kuzjka");
+    private Node ruel = new Person(2, "Ruel");
+    private Node kulya = new Person(3, "Kulya");
     
     @Before
     public void setUp() {
@@ -28,10 +28,10 @@ public class TestInMemorySocialConnectionsServiceImpl {
         service.addLink(kuzjka, kuzjka);
         
         //checks if kuzjka has only 2 links
-        assertEquals(service.nodeListForId(1).size(), 2);
+        assertEquals(2, service.nodeListForId(1).size());
         
         //checks if kuzjka and kulya are directly connected
-        assertEquals(service.getPathBetween(kuzjka, kulya).size(), 2);
+        assertEquals(2, service.getPathBetween(kuzjka, kulya).size());
     }
     
     @Test
@@ -39,7 +39,7 @@ public class TestInMemorySocialConnectionsServiceImpl {
         //tests double linking and removeLink()
         service.addLink(kuzjka, ruel);
         service.addLink(ruel, kuzjka);
-        assertEquals(service.nodeListForId(1).size(), 1);
+        assertEquals(1, service.nodeListForId(1).size());
         service.removeLink(kuzjka, ruel);
         assertNull(service.nodeListForId(1));
         assertNull(service.nodeListForId(2));
@@ -54,7 +54,7 @@ public class TestInMemorySocialConnectionsServiceImpl {
         result.add(ruel);
         result.add(kuzjka);
         result.add(kulya);
-        assertEquals(service.getPathBetween(ruel, kulya), result);
+        assertEquals(result, service.getPathBetween(ruel, kulya));
     }
     
     @Test

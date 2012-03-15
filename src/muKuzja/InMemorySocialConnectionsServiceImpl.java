@@ -4,9 +4,10 @@ import java.util.*;
 
 public class InMemorySocialConnectionsServiceImpl implements
         SocialConnectionsService {
+    
+    private List linkSet
 
-    @Override
-    public void addLink(Node left, Node right) {
+     public void addLink(Node left, Node right) {
         // TODO Auto-generated method stub
 
     }
